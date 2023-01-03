@@ -10,7 +10,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React homework template
+    Последняя домашечка реакт. Со слезами на глазах.
     </div>
   );
 };
