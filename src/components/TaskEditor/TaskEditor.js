@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { addTask } from 'redux/tasks/operations';
 import { selectAllTasks } from 'redux/tasks/selectors';
 import Filter from 'components/Filter/Filter';
+import css from './TaskEditor.module.css'
 
 export default function TaskEditor() {
   const [name, setName] = useState('');
@@ -68,8 +69,9 @@ export default function TaskEditor() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <> Name </>
+        <p> Name </p>
         <input
+        className={css.input}
           name="name"
           type="text"
           value={name}
@@ -81,6 +83,7 @@ export default function TaskEditor() {
 
         <p> Number </p>
         <input
+        className={css.input}
           name="number"
           type="tel"
           value={number}
@@ -91,10 +94,9 @@ export default function TaskEditor() {
         ></input>
 
         <div>
-          <button type="submit">Добавить контакт</button>
+          <button type="submit" className={css.button}>Добавить контакт</button>
         </div>
       </form>
-      <p>Найти контакт</p>
       <Filter />
     </div>
   );
