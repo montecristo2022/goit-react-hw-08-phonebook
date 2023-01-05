@@ -3,7 +3,7 @@ import css from './TaskList.module.css';
 import { useContacts } from 'hooks/useContacts';
 
 export const TaskList = () => {
-  const { filterContacts, isLoading, contacts } = useContacts();
+  const { filterContacts, contacts } = useContacts();
   const contactsLowerFilter = filterContacts?.toLowerCase();
 
   const visibleContacts = contacts.filter(contact =>
