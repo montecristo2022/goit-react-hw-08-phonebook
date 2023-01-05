@@ -12,10 +12,12 @@ export const UserMenu = () => {
   
   const dispatch = useDispatch();
    const { user } = useAuth();
+console.log(user)
+
 
   return (
     <div className={css.wrapper}>
-      <p className={css.username}>Welcome, {user.name ? user.name : 'friend'}</p>
+      {/* <p className={css.username}>Welcome, {user.name}</p> */}
   
       <button type="button" onClick={() => dispatch(logOut())}>
         Logout
