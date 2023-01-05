@@ -1,15 +1,14 @@
 import { useSelector } from 'react-redux';
-
-import { selectLoading, selectFilter, selectAllContacts } from 'redux/contacts/selectors';
+import { selectFilter, selectLoading, selectAllTasks } from 'redux/tasks/selectors';
 
 export const useContacts = () => {
-    const isLoading = useSelector(selectLoading);
-    const filterContacts = useSelector(selectFilter);
-    const contacts = useSelector(selectAllContacts);
-  
-    return {
-        isLoading,
-        filterContacts,
-        contacts,
-    };
-}
+  const isLoading = useSelector(selectLoading);
+  const filterContacts = useSelector(selectFilter);
+  const contacts = useSelector(selectAllTasks);
+
+  return {
+    isLoading,
+    filterContacts,
+    contacts,
+  };
+};

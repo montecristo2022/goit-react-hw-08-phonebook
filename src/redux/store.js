@@ -1,4 +1,3 @@
-import { contactsFilterSlice } from './contactsFilterSlice';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -11,8 +10,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { tasksReducer } from './tasks/slice';
 import { authReducer } from './auth/slice';
-import { contactsReducer } from './contacts/slice';
+import { FilterSlice } from './FilterSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -26,14 +26,15 @@ const middleware = [
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+   whitelist: ['token'],
 };
 
 export const store = configureStore({
   reducer: {
-    filterRandom: contactsFilterSlice.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer,
+    tasks: tasksReducer,
+    filter: FilterSlice.reducer,
+   
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
