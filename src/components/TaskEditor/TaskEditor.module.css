@@ -1,6 +1,6 @@
  .button {
   cursor: pointer;
-
+margin-top: 20px;
   padding: 7px 15px 7px 15px;
   border: 1px black solid;
   }
