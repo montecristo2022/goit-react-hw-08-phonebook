@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import Notiflix from 'notiflix';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 // Utility to add JWT
@@ -26,6 +26,14 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.response.status === 400) {
+        Notiflix.Notify.failure(
+          `The password must contain at least 7 characters. Mail must have at least 3 characters before at (@)`,
+          {
+            timeout: 7000,
+          }
+        );
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -44,6 +52,11 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.response.status === 400) {
+        Notiflix.Notify.failure(`Wrong password or email`, {
+          timeout: 5000,
+        });
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -89,10 +102,6 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-
-
-
-
 
 // import axios from 'axios';
 // import { createAsyncThunk } from '@reduxjs/toolkit';

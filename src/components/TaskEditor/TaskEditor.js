@@ -94,7 +94,7 @@ export default function TaskEditor() {
         ></input>
 
         <div>
-          <button type="submit" className={css.button}>Добавить контакт</button>
+          <button type="submit" className={css.button}>Add contact</button>
         </div>
       </form>
       <Filter />
